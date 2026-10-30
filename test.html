@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusAI | LLaMA Assistant</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #090b10;
+            --sidebar: #0e1117;
+            --surface: #131720;
+            --surface2: #191d27;
+            --border: #272c38;
+            --text: #f5f7fb;
+            --muted: #8c94a5;
+            --accent: #7c5cff;
+            --accent2: #a178ff;
+            --green: #31d17c;
+            --danger: #ff5c69;
+        }
+
+        body.light {
+            --bg: #f5f6f8;
+            --sidebar: #ffffff;
+            --surface: #ffffff;
+            --surface2: #f0f1f5;
+            --border: #dfe2e8;
+            --text: #15171c;
+            --muted: #697180;
+        }
+
+        body {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            height: 100vh;
+            overflow: hidden;
+            transition: background .25s, color .25s;
+        }
+
+        /* ================= APP ================= */
+
+        .app {
+            height: 100vh;
+            display: flex;
+        }
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            width: 275px;
+            background: var(--sidebar);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 17px 13px;
+            transition: .3s;
+            z-index: 20;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 4px 8px 20px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            background: linear-gradient(135deg, #7354ff, #b06cff);
+            box-shadow: 0 10px 30px rgba(124, 92, 255, .25);
+        }
+
+        .brand-title {
+            font-size: 18px;
+            font-weight: 750;
+        }
+
+        .brand-subtitle {
+            font-size: 10px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .new-chat {
+            width: 100%;
+            border: 1px solid #3d3561;
+            background: linear-gradient(135deg, rgba(124, 92, 255, .2), rgba(124, 92, 255, .06));
+            color: white;
+            border-radius: 11px;
+            padding: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: .2s;
+            margin-bottom: 21px;
+        }
+
+        .new-chat:hover {
+            transform: translateY(-1px);
+            background: rgba(124, 92, 255, .28);
+        }
+
+        .section {
+            color: #707887;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0 10px 9px;
+        }
+
+        .history {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .chat-item {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 10px;
+            border-radius: 9px;
+            margin-bottom: 3px;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 13px;
+            transition: .15s;
+        }
+
+        .chat-item:hover,
+        .chat-item.active {
+            color: var(--text);
+            background: var(--surface2);
+        }
+
+        .chat-icon {
+            font-size: 13px;
+        }
+
+        .profile {
+            border-top: 1px solid var(--border);
+            padding-top: 14px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .profile-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #333947, #596275);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-info strong {
+            display: block;
+            font-size: 12px;
+        }
+
+        .profile-info span {
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .profile-menu {
+            background: none;
+            border: none;
+            color: var(--muted);
+            cursor: pointer;
+        }
+
+        /* ================= MAIN ================= */
+
+        .main {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topbar {
+            height: 67px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 25px;
+            background: rgba(9, 11, 16, .82);
+            backdrop-filter: blur(14px);
+        }
+
+        body.light .topbar {
+            background: rgba(255, 255, 255, .8);
+        }
+
+        .model-selector {
+            position: relative;
+        }
+
+        .model-button {
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 9px;
+        }
+
+        .model-button:hover {
+            background: var(--surface2);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--green);
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(49, 209, 124, .8);
+        }
+
+        .model-name {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .model-version {
+            color: var(--muted);
+            font-size: 11px;
+            margin-left: 3px;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 46px;
+            left: 0;
+            width: 230px;
+            padding: 7px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .3);
+            display: none;
+            z-index: 50;
+        }
+
+        .dropdown.show {
+            display: block;
+            animation: drop .15s ease;
+        }
+
+        @keyframes drop {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .model-option {
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .model-option:hover {
+            background: var(--surface2);
+        }
+
+        .model-option small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            margin-top: 3px;
+        }
+
+        .top-actions {
+            display: flex;
+            gap: 7px;
+        }
+
+        .icon-btn {
+            width: 36px;
+            height: 36px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            border-radius: 9px;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .icon-btn:hover {
+            color: var(--text);
+            border-color: var(--accent);
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        /* ================= CHAT ================= */
+
+        .chat-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px 20px 160px;
+            scroll-behavior: smooth;
+        }
+
+        .chat-container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .welcome {
+            text-align: center;
+            padding: 60px 0 35px;
+        }
+
+        .hero-logo {
+            width: 72px;
+            height: 72px;
+            border-radius: 22px;
+            margin: auto;
+            display: grid;
+            place-items: center;
+            font-size: 30px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #7354ff, #b06cff);
+            box-shadow: 0 20px 60px rgba(124, 92, 255, .28);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            50% {
+                transform: translateY(-7px);
+            }
+        }
+
+        .welcome h1 {
+            font-size: 34px;
+            margin-top: 23px;
+            letter-spacing: -1px;
+        }
+
+        .gradient {
+            background: linear-gradient(90deg, #9d82ff, #d59bff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .welcome p {
+            color: var(--muted);
+            margin-top: 9px;
+            font-size: 14px;
+        }
+
+        .suggestions {
+            margin: 30px auto 0;
+            max-width: 680px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 11px;
+        }
+
+        .suggestion {
+            text-align: left;
+            padding: 16px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            border-radius: 13px;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .suggestion:hover {
+            transform: translateY(-3px);
+            border-color: #62509c;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, .15);
+        }
+
+        .suggestion-icon {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .suggestion strong {
+            font-size: 13px;
+            display: block;
+        }
+
+        .suggestion span {
+            color: var(--muted);
+            font-size: 11px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* ================= MESSAGE ================= */
+
+        .message {
+            display: flex;
+            gap: 13px;
+            margin: 30px 0;
+            animation: messageIn .25s ease;
+        }
+
+        @keyframes messageIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-avatar {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .ai-avatar {
+            background: linear-gradient(135deg, #7354ff, #a76aff);
+        }
+
+        .user-avatar {
+            background: #2b303b;
+        }
+
+        .message-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .message-name {
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .message-text {
+            color: #d9dee7;
+            font-size: 14px;
+            line-height: 1.75;
+            word-wrap: break-word;
+        }
+
+        body.light .message-text {
+            color: #343944;
+        }
+
+        .message-actions {
+            display: flex;
+            gap: 4px;
+            margin-top: 7px;
+        }
+
+        .message-actions button {
+            background: transparent;
+            border: none;
+            color: #727a89;
+            font-size: 11px;
+            padding: 5px 7px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .message-actions button:hover {
+            color: var(--text);
+            background: var(--surface2);
+        }
+
+        /* CODE */
+
+        .code-block {
+            margin-top: 10px;
+            background: #0a0d12;
+            border: 1px solid #272d38;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 11px;
+            border-bottom: 1px solid #272d38;
+            color: #7d8696;
+            font-size: 10px;
+        }
+
+        .code-header button {
+            background: none;
+            border: none;
+            color: #8f97a7;
+            cursor: pointer;
+        }
+
+        .code-content {
+            padding: 13px;
+            color: #cbd5e1;
+            font-family: "Fira Code", monospace;
+            font-size: 12px;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        /* ================= TYPING ================= */
+
+        .typing {
+            display: flex;
+            gap: 5px;
+            padding: 8px 0;
+        }
+
+        .typing span {
+            width: 6px;
+            height: 6px;
+            background: #858c99;
+            border-radius: 50%;
+            animation: typing 1.2s infinite;
+        }
+
+        .typing span:nth-child(2) {
+            animation-delay: .15s;
+        }
+
+        .typing span:nth-child(3) {
+            animation-delay: .3s;
+        }
+
+        @keyframes typing {
+
+            0%,
+            60%,
+            100% {
+                opacity: .25;
+                transform: translateY(0);
+            }
+
+            30% {
+                opacity: 1;
+                transform: translateY(-4px);
+            }
+        }
+
+        /* ================= INPUT ================= */
+
+        .input-area {
+            position: absolute;
+            bottom: 0;
+            left: 275px;
+            right: 0;
+            padding: 20px 20px 24px;
+            background: linear-gradient(transparent, var(--bg) 28%);
+        }
+
+        .input-container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .input-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            padding: 10px 12px 9px 16px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, .25);
+            transition: .2s;
+        }
+
+        .input-box:focus-within {
+            border-color: #594b8a;
+            box-shadow: 0 15px 55px rgba(124, 92, 255, .09);
+        }
+
+        textarea {
+            width: 100%;
+            max-height: 130px;
+            min-height: 30px;
+            resize: none;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: var(--text);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        textarea::placeholder {
+            color: #697181;
+        }
+
+        .input-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 6px;
+        }
+
+        .tools {
+            display: flex;
+            gap: 4px;
+        }
+
+        .tool-btn {
+            background: transparent;
+            border: none;
+            color: var(--muted);
+            padding: 6px 8px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .tool-btn:hover {
+            color: var(--text);
+            background: var(--surface2);
+        }
+
+        .send-btn {
+            width: 35px;
+            height: 35px;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            background: var(--accent);
+            cursor: pointer;
+            font-size: 17px;
+            transition: .2s;
+        }
+
+        .send-btn:hover {
+            background: var(--accent2);
+            transform: scale(1.05);
+        }
+
+        .send-btn.stop {
+            background: var(--danger);
+        }
+
+        .input-footer {
+            display: flex;
+            justify-content: space-between;
+            color: #626a78;
+            font-size: 9px;
+            margin-top: 7px;
+        }
+
+        .char-count {
+            color: #626a78;
+        }
+
+        /* ================= SETTINGS ================= */
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .55);
+            backdrop-filter: blur(4px);
+            display: none;
+            z-index: 80;
+        }
+
+        .overlay.show {
+            display: block;
+        }
+
+        .settings {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 390px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            padding: 22px;
+            z-index: 90;
+            display: none;
+            box-shadow: 0 30px 100px rgba(0, 0, 0, .4);
+        }
+
+        .settings.show {
+            display: block;
+            animation: modal .2s ease;
+        }
+
+        @keyframes modal {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -47%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .settings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .settings-header h2 {
+            font-size: 18px;
+        }
+
+        .close {
+            border: none;
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .setting {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .setting:last-child {
+            border: none;
+        }
+
+        .setting-title {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .setting-desc {
+            color: var(--muted);
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        /* ================= TOAST ================= */
+
+        .toast {
+            position: fixed;
+            bottom: 105px;
+            left: 50%;
+            transform: translateX(-50%) translateY(15px);
+            background: #20242d;
+            border: 1px solid #343946;
+            color: white;
+            padding: 9px 14px;
+            border-radius: 9px;
+            font-size: 12px;
+            opacity: 0;
+            pointer-events: none;
+            transition: .25s;
+            z-index: 100;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width: 750px) {
+
+            .sidebar {
+                position: fixed;
+                left: -290px;
+                top: 0;
+                bottom: 0;
+                box-shadow: 15px 0 50px rgba(0, 0, 0, .4);
+            }
+
+            .sidebar.open {
+                left: 0;
+            }
+
+            .mobile-menu {
+                display: block;
+                border: none;
+                background: transparent;
+                color: var(--text);
+                font-size: 20px;
+                cursor: pointer;
+                margin-right: 8px;
+            }
+
+            .topbar {
+                padding: 0 13px;
+            }
+
+            .input-area {
+                left: 0;
+                padding: 14px 11px 19px;
+            }
+
+            .suggestions {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome {
+                padding-top: 35px;
+            }
+
+            .welcome h1 {
+                font-size: 27px;
+            }
+
+            .model-version {
+                display: none;
+            }
+
+            .chat-area {
+                padding: 20px 13px 150px;
+            }
+
+            .settings {
+                width: calc(100% - 30px);
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="app">
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="logo">C</div>
+
+                <div>
+                    <div class="brand-title">CampusAI</div>
+                    <div class="brand-subtitle">Powered by LLaMA</div>
+                </div>
+            </div>
+
+            <button class="new-chat" onclick="newChat()">
+                ＋ &nbsp; New conversation
+            </button>
+
+            <div class="section">Recent conversations</div>
+
+            <div class="history" id="history">
+
+                <div class="chat-item active">
+                    <span class="chat-icon">✦</span>
+                    Operating Systems
+                </div>
+
+                <div class="chat-item">
+                    <span class="chat-icon">◈</span>
+                    Machine Learning Project
+                </div>
+
+                <div class="chat-item">
+                    <span class="chat-icon">◇</span>
+                    DBMS Important Questions
+                </div>
+
+                <div class="chat-item">
+                    <span class="chat-icon">⌘</span>
+                    Python Programming
+                </div>
+
+                <div class="chat-item">
+                    <span class="chat-icon">◎</span>
+                    Computer Networks
+                </div>
+
+                <div class="chat-item">
+                    <span class="chat-icon">▣</span>
+                    Software Engineering
+                </div>
+
+            </div>
+
+            <div class="profile">
+
+                <div class="profile-avatar">ST</div>
+
+                <div class="profile-info">
+                    <strong>Student Account</strong>
+                    <span>College AI Assistant</span>
+                </div>
+
+                <button class="profile-menu">⋮</button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN ================= -->
+
+        <main class="main">
+
+            <header class="topbar">
+
+                <div class="model-selector">
+
+                    <button class="model-button" onclick="toggleModels()">
+
+                        <span class="status-dot"></span>
+
+                        <span class="model-name" id="selectedModel">
+                            LLaMA 3.1
+                        </span>
+
+                        <span class="model-version">
+                            8B
+                        </span>
+
+                        <span>⌄</span>
+
+                    </button>
+
+                    <div class="dropdown" id="modelDropdown">
+
+                        <div class="model-option" onclick="selectModel('LLaMA 3.1','8B')">
+                            <b>LLaMA 3.1</b>
+                            <small>Fast • Recommended for students</small>
+                        </div>
+
+                        <div class="model-option" onclick="selectModel('LLaMA 3.1','70B')">
+                            <b>LLaMA 3.1</b>
+                            <small>Advanced reasoning</small>
+                        </div>
+
+                        <div class="model-option" onclick="selectModel('LLaMA 3.2','3B')">
+                            <b>LLaMA 3.2</b>
+                            <small>Lightweight • Fast responses</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="top-actions">
+
+                    <button class="mobile-menu" onclick="toggleSidebar()">
+                        ☰
+                    </button>
+
+                    <button class="icon-btn" title="Toggle theme" onclick="toggleTheme()">
+                        ◐
+                    </button>
+
+                    <button class="icon-btn" title="Settings" onclick="openSettings()">
+                        ⚙
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- ================= CHAT ================= -->
+
+            <section class="chat-area" id="chatArea">
+
+                <div class="chat-container" id="chatContainer">
+
+                    <div class="welcome" id="welcome">
+
+                        <div class="hero-logo">C</div>
+
+                        <h1>
+                            What can I help you <span class="gradient">learn?</span>
+                        </h1>
+
+                        <p>
+                            Your private college AI assistant powered by LLaMA.
+                        </p>
+
+
+                        <div class="suggestions">
+
+                            <div class="suggestion"
+                                onclick="useSuggestion('Explain Operating Systems in simple terms')">
+
+                                <div class="suggestion-icon">📚</div>
+
+                                <strong>Study something</strong>
+
+                                <span>
+                                    Explain difficult academic concepts
+                                </span>
+
+                            </div>
+
+
+                            <div class="suggestion"
+                                onclick="useSuggestion('Give me innovative major project ideas for Computer Science')">
+
+                                <div class="suggestion-icon">💡</div>
+
+                                <strong>Find project ideas</strong>
+
+                                <span>
+                                    Discover innovative college projects
+                                </span>
+
+                            </div>
+
+
+                            <div class="suggestion"
+                                onclick="useSuggestion('Prepare 10 important questions for my viva')">
+
+                                <div class="suggestion-icon">🎯</div>
+
+                                <strong>Prepare for viva</strong>
+
+                                <span>
+                                    Practice important interview questions
+                                </span>
+
+                            </div>
+
+
+                            <div class="suggestion"
+                                onclick="useSuggestion('Write a Python program to implement binary search')">
+
+                                <div class="suggestion-icon">💻</div>
+
+                                <strong>Write some code</strong>
+
+                                <span>
+                                    Get help with programming
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= INPUT ================= -->
+
+            <div class="input-area">
+
+                <div class="input-container">
+
+                    <div class="input-box">
+
+                        <textarea id="input" rows="1" maxlength="4000" placeholder="Message CampusAI..."
+                            oninput="resizeInput(); updateCount();" onkeydown="handleKey(event)">
+        </textarea>
+
+
+                        <div class="input-bottom">
+
+                            <div class="tools">
+
+                                <button class="tool-btn" onclick="showToast('File attachment UI')">
+                                    ＋ Attach
+                                </button>
+
+                                <button class="tool-btn" onclick="showToast('Web search enabled')">
+                                    ◉ Web
+                                </button>
+
+                                <button class="tool-btn" onclick="showToast('Code interpreter enabled')">
+                                </button>
+                                ⌘ Code
+                                </button>
+
+                            </div>
+
+
+                            <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+                                ↑
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-footer">
+
+                        <span>
+                            LLaMA may generate inaccurate information.
+                        </span>
+
+                        <span class="char-count" id="count">
+                            0 / 4000
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= SETTINGS ================= -->
+
+    <div class="overlay" id="overlay" onclick="closeSettings()"></div>
+
+    <div class="settings" id="settings">
+
+        <div class="settings-header">
+
+            <h2>Settings</h2>
+
+            <button class="close" onclick="closeSettings()">×</button>
+
+        </div>
+
+
+        <div class="setting">
+
+            <div class="setting-title">
+                Model
+            </div>
+
+            <div class="setting-desc">
+                Currently using LLaMA 3.1
+            </div>
+
+        </div>
+
+
+        <div class="setting">
+
+            <div class="setting-title">
+                Response style
+            </div>
+
+            <div class="setting-desc">
+                Balanced and educational
+            </div>
+
+        </div>
+
+
+        <div class="setting">
+
+            <div class="setting-title">
+                Conversation memory
+            </div>
+
+            <div class="setting-desc">
+                Remember context during this session
+            </div>
+
+        </div>
+
+
+        <div class="setting">
+
+            <div class="setting-title">
+                Privacy
+            </div>
+
+            <div class="setting-desc">
+                Your conversations stay within your college AI system.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="toast" id="toast">
+        Done
+    </div>
+
+
+    <script>
+
+        const input = document.getElementById("input");
+        const chatContainer = document.getElementById("chatContainer");
+        const chatArea = document.getElementById("chatArea");
+
+        let generating = false;
+        let generationTimer = null;
+
+
+        /* ================= INPUT ================= */
+
+        function resizeInput() {
+
+            input.style.height = "auto";
+
+            input.style.height =
+                Math.min(input.scrollHeight, 130) + "px";
+        }
+
+
+        function updateCount() {
+
+            document.getElementById("count").textContent =
+                `${input.value.length} / 4000`;
+
+        }
+
+
+        function handleKey(event) {
+
+            if (
+                event.key === "Enter" &&
+                !event.shiftKey
+            ) {
+
+                event.preventDefault();
+
+                sendMessage();
+            }
+
+        }
+
+
+        /* ================= SUGGESTIONS ================= */
+
+        function useSuggestion(text) {
+
+            input.value = text;
+
+            resizeInput();
+
+            updateCount();
+
+            input.focus();
+
+        }
+
+
+        /* ================= SEND ================= */
+
+        function sendMessage() {
+
+            if (generating) {
+
+                stopGeneration();
+
+                return;
+            }
+
+            const text = input.value.trim();
+
+            if (!text) return;
+
+            document.getElementById("welcome")?.remove();
+
+            addUserMessage(text);
+
+            input.value = "";
+
+            resizeInput();
+
+            updateCount();
+
+            generateResponse(text);
+
+        }
+
+
+        /* ================= USER MESSAGE ================= */
+
+        function addUserMessage(text) {
+
+            const message = document.createElement("div");
+
+            message.className = "message";
+
+            message.innerHTML = `
+
+        <div class="message-avatar user-avatar">
+            ST
+        </div>
+
+        <div class="message-body">
+
+            <div class="message-name">
+                You
+            </div>
+
+            <div class="message-text">
+                ${escapeHTML(text)}
+            </div>
+
+            <div class="message-actions">
+
+                <button onclick="copyMessage(this)">
+                    Copy
+                </button>
+
+            </div>
+
+        </div>
+    `;
+
+            chatContainer.appendChild(message);
+
+            scrollBottom();
+
+        }
+
+
+        /* ================= AI RESPONSE ================= */
+
+        function generateResponse(question) {
+
+            generating = true;
+
+            const sendBtn = document.getElementById("sendBtn");
+            sendBtn.classList.add("stop");
+            sendBtn.innerHTML = "■";
+
+            const message = document.createElement("div");
+            message.className = "message";
+
+            message.innerHTML = `
+        <div class="message-avatar ai-avatar">C</div>
+        <div class="message-body">
+            <div class="message-name">CampusAI</div>
+            <div class="message-text">
+                <div class="typing">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    `;
+
+            chatContainer.appendChild(message);
+            scrollBottom();
+
+            fetch("http://127.0.0.1:5000/ask", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ question: question })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Server returned " + response.status);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (!generating) return;
+
+                    const textElement = message.querySelector(".message-text");
+                    textElement.innerHTML = "";
+
+                    const answer =
+                        (data.answer || "No answer received.") +
+                        "\n\n📄 Source: " +
+                        (data.source || "Unknown");
+
+                    streamText(textElement, answer, message);
+                })
+                .catch(error => {
+                    console.error("CollegeGPT connection error:", error);
+
+                    const textElement = message.querySelector(".message-text");
+                    textElement.innerText =
+                        "Sorry, I couldn't connect to CollegeGPT.\n\n" +
+                        "Make sure the Flask backend is running on port 5000.";
+
+                    finishGeneration(message);
+                });
+        }
+
+
+        /* ================= STREAMING ================= */
+
+        function streamText(element, text, message) {
+
+            let index = 0;
+
+            function type() {
+
+                if (!generating) return;
+
+                if (index < text.length) {
+
+                    element.innerHTML =
+                        escapeHTML(text.substring(0, index))
+                            .replace(/\n/g, "<br>");
+
+                    index++;
+
+                    scrollBottom();
+
+                    generationTimer =
+                        setTimeout(type, 12);
+
+                } else {
+
+                    finishGeneration(message);
+                }
+            }
+
+            type();
+
+        }
+
+
+        /* ================= DEMO AI ================= */
+
+        function getDemoResponse(question) {
+
+            const lower =
+                question.toLowerCase();
+
+            if (lower.includes("operating system")) {
+
+                return `Operating System (OS) is system software that manages computer hardware and provides services for applications.
+
+The main responsibilities of an OS include:
+
+1. Process Management
+2. Memory Management
+3. File Management
+4. Device Management
+5. Security and User Management
+
+Examples include Windows, Linux, macOS and Android.
+
+For your college viva, remember this definition:
+
+"An operating system acts as an interface between the user and computer hardware."`;
+
+            }
+
+
+            if (
+                lower.includes("project") ||
+                lower.includes("major project")
+            ) {
+
+                return `For a Computer Science major project, a LLaMA-based College AI Assistant is a strong choice.
+
+You can include:
+
+• AI-powered student chatbot
+• College FAQ system
+• PDF/document question answering
+• Department-specific assistants
+• RAG-based knowledge retrieval
+• Student doubt solving
+• Viva preparation
+• Coding assistance
+
+A particularly impressive architecture would be:
+
+Frontend → Backend API → RAG Layer → LLaMA → Response
+
+You can later connect this UI to your actual LLaMA model.`;
+
+            }
+
+
+            if (lower.includes("python")) {
+
+                return `Here is a simple Python example:
+
+def binary_search(arr, target):
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+
+    return -1
+
+This algorithm has O(log n) time complexity when the array is sorted.`;
+
+            }
+
+
+            return `That's a great question.
+
+I'm currently running in frontend demo mode. Once you connect this interface to your LLaMA backend, this section can display the actual model response.
+
+For your major project, you can connect:
+
+Frontend
+↓
+REST API / WebSocket
+↓
+Python FastAPI / Node.js
+↓
+LLaMA Model
+↓
+Response
+
+This UI is designed so that the demo response can easily be replaced with your real API response.`;
+
+        }
+
+
+        /* ================= FINISH ================= */
+
+        function finishGeneration(message) {
+
+            generating = false;
+
+            const sendBtn =
+                document.getElementById("sendBtn");
+
+            sendBtn.classList.remove("stop");
+
+            sendBtn.innerHTML = "↑";
+
+
+            const body =
+                message.querySelector(".message-body");
+
+            const actions =
+                document.createElement("div");
+
+            actions.className = "message-actions";
+
+            actions.innerHTML = `
+
+        <button onclick="copyMessage(this)">
+            Copy
+        </button>
+
+        <button onclick="regenerate(this)">
+            ↻ Regenerate
+        </button>
+
+        <button onclick="showToast('Feedback recorded')">
+            ♡
+        </button>
+    `;
+
+            body.appendChild(actions);
+
+            scrollBottom();
+
+        }
+
+
+        /* ================= STOP ================= */
+
+        function stopGeneration() {
+
+            generating = false;
+
+            clearTimeout(generationTimer);
+
+            const sendBtn =
+                document.getElementById("sendBtn");
+
+            sendBtn.classList.remove("stop");
+
+            sendBtn.innerHTML = "↑";
+
+            showToast("Generation stopped");
+
+        }
+
+
+        /* ================= REGENERATE ================= */
+
+        function regenerate(button) {
+
+            const message =
+                button.closest(".message");
+
+            const text =
+                message.querySelector(".message-text");
+
+            text.innerHTML = `
+
+        <div class="typing">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    `;
+
+            generating = true;
+
+            const sendBtn =
+                document.getElementById("sendBtn");
+
+            sendBtn.classList.add("stop");
+
+            sendBtn.innerHTML = "■";
+
+
+            setTimeout(() => {
+
+                text.innerHTML = "";
+
+                streamText(
+                    text,
+                    "Here is a regenerated response from CampusAI. When connected to your LLaMA backend, this content will come directly from your model.",
+                    message
+                );
+
+            }, 700);
+
+        }
+
+
+        /* ================= COPY ================= */
+
+        function copyMessage(button) {
+
+            const body =
+                button.closest(".message-body");
+
+            const text =
+                body.querySelector(".message-text").innerText;
+
+            navigator.clipboard.writeText(text);
+
+            button.innerText = "Copied ✓";
+
+            setTimeout(() => {
+
+                button.innerText = "Copy";
+
+            }, 1400);
+
+        }
+
+
+        /* ================= NEW CHAT ================= */
+
+        function newChat() {
+
+            generating = false;
+
+            chatContainer.innerHTML = `
+
+        <div class="welcome" id="welcome">
+
+            <div class="hero-logo">C</div>
+
+            <h1>
+                What can I help you
+                <span class="gradient">learn?</span>
+            </h1>
+
+            <p>
+                Your private college AI assistant powered by LLaMA.
+            </p>
+
+            <div class="suggestions">
+
+                <div class="suggestion"
+                    onclick="useSuggestion('Explain Operating Systems in simple terms')">
+
+                    <div class="suggestion-icon">📚</div>
+
+                    <strong>Study something</strong>
+
+                    <span>
+                        Explain difficult academic concepts
+                    </span>
+
+                </div>
+
+                <div class="suggestion"
+                    onclick="useSuggestion('Give me innovative major project ideas')">
+
+                    <div class="suggestion-icon">💡</div>
+
+                    <strong>Find project ideas</strong>
+
+                    <span>
+                        Discover innovative college projects
+                    </span>
+
+                </div>
+
+                <div class="suggestion"
+                    onclick="useSuggestion('Prepare important viva questions for me')">
+
+                    <div class="suggestion-icon">🎯</div>
+
+                    <strong>Prepare for viva</strong>
+
+                    <span>
+                        Practice important questions
+                    </span>
+
+                </div>
+
+                <div class="suggestion"
+                    onclick="useSuggestion('Write a Python program for binary search')">
+
+                    <div class="suggestion-icon">💻</div>
+
+                    <strong>Write some code</strong>
+
+                    <span>
+                        Get programming assistance
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+    `;
+
+            showToast("New conversation started");
+
+        }
+
+
+        /* ================= MODEL ================= */
+
+        function toggleModels() {
+
+            document
+                .getElementById("modelDropdown")
+                .classList.toggle("show");
+
+        }
+
+
+        function selectModel(name, size) {
+
+            document.getElementById("selectedModel")
+                .innerText = name;
+
+            document.querySelector(".model-version")
+                .innerText = size;
+
+            document
+                .getElementById("modelDropdown")
+                .classList.remove("show");
+
+            showToast(`${name} ${size} selected`);
+
+        }
+
+
+        /* ================= THEME ================= */
+
+        function toggleTheme() {
+
+            document.body.classList.toggle("light");
+
+            const light =
+                document.body.classList.contains("light");
+
+            localStorage.setItem(
+                "campus-theme",
+                light ? "light" : "dark"
+            );
+
+        }
+
+
+        /* Load saved theme */
+
+        if (
+            localStorage.getItem("campus-theme")
+            === "light"
+        ) {
+
+            document.body.classList.add("light");
+
+        }
+
+
+        /* ================= SETTINGS ================= */
+
+        function openSettings() {
+
+            document
+                .getElementById("settings")
+                .classList.add("show");
+
+            document
+                .getElementById("overlay")
+                .classList.add("show");
+
+        }
+
+
+        function closeSettings() {
+
+            document
+                .getElementById("settings")
+                .classList.remove("show");
+
+            document
+                .getElementById("overlay")
+                .classList.remove("show");
+
+        }
+
+
+        /* ================= SIDEBAR ================= */
+
+        function toggleSidebar() {
+
+            document
+                .getElementById("sidebar")
+                .classList.toggle("open");
+
+        }
+
+
+        /* ================= TOAST ================= */
+
+        function showToast(text) {
+
+            const toast =
+                document.getElementById("toast");
+
+            toast.innerText = text;
+
+            toast.classList.add("show");
+
+            setTimeout(() => {
+
+                toast.classList.remove("show");
+
+            }, 1800);
+
+        }
+
+
+        /* ================= UTILITIES ================= */
+
+        function scrollBottom() {
+
+            chatArea.scrollTop =
+                chatArea.scrollHeight;
+
+        }
+
+
+        function escapeHTML(text) {
+
+            const div =
+                document.createElement("div");
+
+            div.textContent = text;
+
+            return div.innerHTML;
+
+        }
+
+
+        /* Close model dropdown */
+
+        document.addEventListener("click", function (event) {
+
+            const selector =
+                document.querySelector(".model-selector");
+
+            if (!selector.contains(event.target)) {
+
+                document
+                    .getElementById("modelDropdown")
+                    .classList.remove("show");
+
+            }
+
+        });
+
+
+        /* Chat history interaction */
+
+        document.querySelectorAll(".chat-item")
+            .forEach(item => {
+
+                item.addEventListener("click", function () {
+
+                    document
+                        .querySelectorAll(".chat-item")
+                        .forEach(i =>
+                            i.classList.remove("active")
+                        );
+
+                    this.classList.add("active");
+
+                    showToast("Conversation selected");
+
+                });
+
+            });
+
+    </script>
+
+</body>
+
+</html>

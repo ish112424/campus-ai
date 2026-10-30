@@ -1,0 +1,1311 @@
+Shri Shankaracharya Technical Campus, Bhilai 
+(An Autonomous Institute Affiliated to CSVTU Bhilai) 
+SYLLABUS 
+B. Tech. Seventh Semester- Computer Science & Engineering 
+ 
+ 
+ 
+
+ 
+ 
+Table-I:  Professional Elective – III [7th Sem] 
+Sl. 
+No. 
+Board of Studies (BOS) 
+Courses (Subject) 
+Course Code 
+1 
+Computer Science and Engg. 
+Internet and Web Technology 
+CS102721 
+2 
+Computer Science and Engg. 
+Natural Language Processing  
+CS110722 
+3 
+Computer Science and Engg. 
+Object Oriented Database 
+Management System 
+CS111723 
+4 
+Computer Science and Engg. 
+AI in Gaming 
+CS114724  
+5 
+Computer Science and Engg. 
+Industrial IOT 
+CS115725 
+Table-II: Open  Elective – II [7th Sem] 
+Sl. 
+No. 
+Board of Studies (BOS) 
+Courses (Subject) 
+Course Code 
+1 
+Computer Science and Engg. 
+Advance Statistical Methods 
+CS100741 
+2 
+Computer Science and Engg. 
+Enterprise Resource Planning 
+CS100742 
+SCHEME OF EXAMINATION 
+B. Tech- 4th  Year                                
+Semester: 7th 
+Branch:  Computer Science and Engineering 
+S.N. 
+Subject Name 
+Subject 
+Code 
+Periods per 
+week 
+Scheme of Exam 
+Total 
+Marks 
+Credit 
+L+(T+
+P)/2 
+L 
+T 
+P 
+Theory/Practical 
+ESE 
+CT 
+TA 
+1 
+Digital Image Processing 
+CS110701 
+2 
+1 
+- 
+100 
+20 
+30 
+150 
+3 
+2 
+Advanced R Programming 
+CS102702 
+2 
+1 
+- 
+100 
+20 
+30 
+150 
+3 
+3 
+Deep Learning 
+CS110703 
+3 
+0 
+- 
+100 
+20 
+30 
+150 
+3 
+4 
+Professional Elective –III 
+Refer Table -II 
+3 
+0 
+- 
+100 
+20 
+30 
+150 
+3 
+5 
+Open Elective – II 
+Refer Table-I 
+3 
+0 
+- 
+100 
+20 
+30 
+150 
+3 
+6 
+ R Programming Lab 
+CS102791 
+- 
+- 
+2 
+25 
+- 
+25 
+50 
+1 
+7 
+ Deep Learning Lab 
+CS110792 
+- 
+-- 
+2 
+25 
+- 
+25 
+50 
+1 
+8 
+Capstone Project Phase -1 
+CS102793 
+- 
+- 
+4 
+50 
+- 
+50 
+100 
+2 
+9 
+Industrial Training (VT) 
+CS102794 
+- 
+- 
+2 
+- 
+- 
+25 
+25 
+1 
+10 
+Universal Human Value 
+and Professional Ethics 
+CS100795 
+- 
+- 
+- 
+- 
+- 
+25 
+25 
+- 
+Total 
+15 
+1 
+8 
+600 
+100 
+300 
+1000 
+20 
+
+Shri Shankaracharya Technical Campus, Bhilai 
+(An Autonomous Institute Affiliated to CSVTU Bhilai) 
+SYLLABUS 
+B. Tech. Seventh Semester- Computer Science & Engineering 
+ 
+ 
+ 
+1.00 
+Applicable for 
+AY 2021-22 Onwards 
+Chairman (AC) 
+Chairman (BoS) 
+Date of Release 
+Version 
+ 
+ 
+Subject Code 
+CS102701 
+Digital Image Processing 
+ 
+L = 3 
+T = 2 
+P = 0 
+Credits = 3 
+Evaluation 
+Scheme 
+ESE 
+CT 
+TA 
+Total 
+ESE Duration 
+100 
+20 
+30 
+150 
+3 Hours 
+Course Objectives 
+Course Outcomes 
+The objective of the course to: 
+1. To introduce the fundamentals of deep 
+learning and the main research activities in 
+this field.  
+2. To learn architectures and optimization 
+methods for deep neural network training. 
+Students will be able to: 
+CO1 Understand the fundamentals of deep 
+learning and the main research activities 
+in this field 
+CO2 Remember 
+architectures 
+and 
+optimization methods for deep neural 
+network training 
+CO3 Implement, apply and test relevant 
+learning algorithms in TensorFlow 
+CO4 Critically 
+evaluate 
+the 
+method’s 
+applicability 
+in 
+new 
+contexts 
+and 
+construct new applications 
+Unit – 1 : Introduction: Digital Image Processing, Fundamental Steps In 
+Image Processing, Components Of Digital Image Processing Systems, Elements 
+Of Visual Perception, Image Formation Model, Image Sampling And 
+Quantization, Relationship Between Pixels- Neighborhood, 
+Adjacency 
+Connectivity, Regions, Boundaries And Distance Measures. 
+CO 01 
+08 Hrs 
+Unit- 2 Image Enhancement: Enhancement By Point Processing, Sample 
+Intensity Transformation, Histogram Processing, Image Subtraction, Image 
+Averaging, Spatial Filtering –Smoothing Special Filters, Sharpening Spatial 
+Filters, Frequency Domain- Fourier Transform, Low Pass, High Pass, 
+Laplacian, Homomorphic Filtering. 
+CO 02 
+08 Hrs 
+Unit- 3 Image Segmentation: Detection of Discontinuities- Point, Line And 
+Edge Detection, Edge Linking And Boundary Detection, Thresholding, Region-
+Based Segmentation- Region Growing, Region Splitting And Merging. Use of 
+Motion in Segmentation- Spatial Techniques and Frequency Domain 
+Technique. 
+CO 03 
+08 Hrs 
+Unit- 4  Image Compression: Coding Redundancy, Inter Pixel Redundancy, 
+Fidelity Criteria, Image Compression Models, Error Free Compression, Lossy 
+Compression, Variable Length Coding, Bit Plane Coding, Lossless Predictive 
+Coding, Image Compression Standards, Real Time Image Transmission, Jpeg 
+and Mpeg. 
+CO 04 
+08 Hrs 
+Unit – 5 Color Image Processing: Color Models, Pseudo Color Image 
+Processing, Color Transformation, Smoothing and Sharpening, Image 
+CO 05 
+
+Shri Shankaracharya Technical Campus, Bhilai 
+(An Autonomous Institute Affiliated to CSVTU Bhilai) 
+SYLLABUS 
+B. Tech. Seventh Semester- Computer Science & Engineering 
+ 
+ 
+ 
+1.00 
+Applicable for 
+AY 2021-22 Onwards 
+Chairman (AC) 
+Chairman (BoS) 
+Date of Release 
+Version 
+ 
+ 
+ 
+Text Books: 
+S. No. 
+Title 
+Author(s) 
+Publisher 
+1 
+DIGITAL IMAGE PROCESSING 
+R. C. GONZALEZ, 
+R. E. WOODS 
+PEARSON 
+EDUCATION 
+2 
+DIGITAL IMAGE PROCESSING 
+W.K. PRATT 
+WILEY- 
+INTERSCIENCE 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Segmentation Based On Color 
+08 Hrs 
+
+Shri Shankaracharya Technical Campus, Bhilai 
+(An Autonomous Institute Affiliated to CSVTU Bhilai) 
+SYLLABUS 
+B. Tech. Seventh Semester- Computer Science & Engineering 
+ 
+ 
+ 
+1.00 
+Applicable for 
+AY 2021-22 Onwards 
+Chairman (AC) 
+Chairman (BoS) 
+Date of Release 
+Version 
+ 
+ 
+Subject Code 
+CS102702 
+Advanced R Programming 
+L = 3 
+T = 2 
+P = 0 
+Credits = 3 
+Evaluation 
+Scheme 
+ESE 
+CT 
+TA 
+Total 
+ESE Duration 
+100 
+20 
+30 
+150 
+3 Hours 
+Course Objectives 
+Course Outcomes 
+1. Learn Fundamentals of R 
+2. Covers how to use different functions 
+in R, how to read data into R, 
+accessing R packages, writing R 
+functions, debugging, and organizing 
+data using R functions. 
+3. Cover the Basics of statistical data 
+analysis with examples.  
+4. The whole syllabus will give an idea to 
+collect, compile and visualize data 
+using statistical functions.  
+After the completion of this course, the 
+students will be able to: 
+1. Understand the basics of Fundamentals 
+of R.  
+2. Understands the loading, retrieval 
+techniques of data. 
+3. Understand how data is analysed and 
+visualized using statistic functions.  
+ 
+Unit I Introduction to Vector, Matrix and Data Frames Introduction to 
+vectors, Vector recycling, Slicing and indexing a vector in R, Extracting 
+elements from a vector, Changing the dimensions of an object in R, Creating a 
+matrix in R, Indexing an element from a matrix, Slicing a matrix in R, Matrix 
+arithmetic, Matrix operations, Categorical data, Factors in R, Lists in R, 
+Introduction , Creating a data frame in R, The Tidy verse Package, Data import 
+in R, Importing a CSV in R Creating data frames, Getting a sense of your data 
+frame, Indexing and slicing a data frame in R, Data frame operations, extending 
+a data frame in R  
+CO 01 
+08 Hrs 
+Unit II Manipulating data Introduction, Data transformation with R- the Dplyr 
+package, Sampling data with Dplyr package, Using the pipe operator in R, 
+Manipulating Data, Tidying data in R-gather() and separate(), unite(), spread(), 
+Tidying data .  
+Introduction to data visualization, introduction to ggplot2, variables: revisited, 
+Building a histogram with ggplot2, building a bar chart with ggplot2, Building a 
+box and whiskers plot with ggplot2, Building a scatterplot with ggplot2 
+CO 02 
+08 Hrs 
+Unit III Exploratory Data analysis Population vs. sample, Mean, median, 
+mode, Skewness, Variance, standard deviation and coefficient of variability, 
+Covariance and Correlation 
+CO 03 
+08 Hrs 
+Unit IV Hypothesis Testing Distribution, Standard Error and Confidence 
+CO 04 
+
+Shri Shankaracharya Technical Campus, Bhilai 
+(An Autonomous Institute Affiliated to CSVTU Bhilai) 
+SYLLABUS 
+B. Tech. Seventh Semester- Computer Science & Engineering 
+ 
+ 
+ 
+1.00 
+Applicable for 
+AY 2021-22 Onwards 
+Chairman (AC) 
+Chairman (BoS) 
+Date of Release 
+Version 
+ 
+ 
+ 
+Text Books: 
+S. No. 
+Title 
+Author(s) 
+Publisher 
+1 
+R Programming for Beginners 
+Sandip Rakshit 
+McGraw Hill Education 
+(India) 
+2 
+Data Analytics using R 
+Seema Acharya 
+McGrawHill Education 
+(India) 
+ 
+Reference Books:  
+S. No. 
+Title 
+Author(s) 
+Publisher 
+1 
+Tutorials Point (I) simply easy learning 
+Online Tutorial Library (2018) 
+https://www.t
+utorialspoint.c
+om/r/r_tutoria
+l.pdf 
+2 
+R for Dummies  
+Andrie de Vries, Joris Meys 
+John Wiley 
+and Sons 
+ 
+ 
+ 
+ 
+Intervals, Hypothesis, Type I and Type II errors, Test for the mean-population 
+variance known, The P-value, Comparing two  means-Independent Samples 
+08 Hrs 
+Unit V Linear Regression Analysis The linear regression model, Correlation vs 
+regression, Correlation vs regression, Geometrical representation Decomposition 
+of variability: SST, SSR, SSE, R-Squared 
+CO 05 
+08 Hrs 
+
+Shri Shankaracharya Technical Campus, Bhilai 
+(An Autonomous Institute Affiliated to CSVTU Bhilai) 
+SYLLABUS 
+B. Tech. Seventh Semester- Computer Science & Engineering 
+ 
+ 
+ 
+1.00 
+Applicable for 
+AY 2021-22 Onwards 
+Chairman (AC) 
+Chairman (BoS) 
+Date of Release 
+Version 
+ 
+ 
+ 
+ 
+ 
+Subject Code 
+CS110703 
+Deep Learning 
+L = 3 
+T = 2 
+P = 0 
+Credits = 3 
+Evaluation 
+Scheme 
+ESE 
+CT 
+TA 
+Total 
+ESE Duration 
+100 
+20 
+30 
+150 
+3 Hours 
+Course Objectives 
+Course Outcomes 
+The objective of the course to: 
+3. To introduce the fundamentals of 
+deep learning and the main 
+research activities in this field.  
+4. To 
+learn 
+architectures 
+and 
+optimization methods for deep 
+neural network training. 
+Students will be able to: 
+CO5 Understand the fundamentals of deep learning 
+and the main research activities in this field 
+CO6 Remember 
+architectures 
+and 
+optimization 
+methods for deep neural network training 
+CO7 Implement, apply and test relevant learning 
+algorithms in TensorFlow 
+CO8 Critically evaluate the method’s applicability in 
+new contexts and construct new applications 
+UNIT 1 Introduction: History of Deep Learning, McCulloch Pitts Neuron, 
+Multilayer Perceptrons (MLPs), Representation Power of MLPs, Sigmoid 
+Neurons, Feed Forward Neural Networks, Back propagation 
+CO 01 
+08 Hrs 
+UNIT 2 Activation Functions & Parameters: Gradient Descent (GD), 
+Momentum Based GD, Nesterov Accelerated GD, Stochastic GD, Principal 
+Component Analysis and its interpretations, Singular Value Decomposition, 
+Parameters v/s Hyper-parameters 
+CO 02 
+08 Hrs 
+UNIT 3 Auto-Encoders & Regularization: Auto encoders and relation to PCA, 
+Regularization in auto encoders, Denoising auto encoders, Sparse auto 
+encoders, Regularization: Bias Variance Tradeoff, L2 regularization, Early 
+stopping, Dataset augmentation, Encoder Decoder Models, Attention 
+Mechanism, Attention over images, Batch Normalization 
+CO 03 
+08 Hrs 
+UNIT 4 Deep Learning Models: Introduction to CNNs, Architecture, 
+Convolution/pooling layers, CNN Applications, LeNet, AlexNet, ZF-Net, 
+VGGNet, GoogLeNet, ResNet. Introduction to RNNs, Back propagation through 
+time (BPTT), Vanishing and Exploding Gradients, Truncated BPTT, GRU, LSTMs 
+CO 04 
+08 Hrs 
+UNIT 5 Deep Learning Applications: Image Processing, Natural Language 
+Processing, Speech recognition, Video Analytics 
+CO 05 
+08 Hrs 
+
+Shri Shankaracharya Technical Campus, Bhilai 
+(An Autonomous Institute Affiliated to CSVTU Bhilai) 
+SYLLABUS 
+B. Tech. Seventh Semester- Computer Science & Engineering 
+ 
+ 
+ 
+1.00 
+Applicable for 
+AY 2021-22 Onwards 
+Chairman (AC) 
+Chairman (BoS) 
+Date of Release 
+Version 
+ 
+ 
+ 
+Text Books: 
+S. 
+No. 
+Title 
+Author(s) 
+Publisher 
+1 
+Deep Learning 
+Ian Goodfellow, 
+Yoshua Bengio, Aaron 
+Courville 
+The MIT Press 
+2 
+Learning deep 
+architectures for AI 
+Bengio, Yoshua 
+Now Publishers 
+ 
+Reference Books: 
+S. 
+No. 
+Title 
+Author(s) 
+Publisher 
+1 
+Deep Learning 
+Rajiv Chopra 
+Khanna Book Publishing 
+ 
+Alternative NPTEL/SWAYAM Course (if any): 
+S. 
+No. 
+NPTEL Course Name 
+Instructor 
+Host Institute 
+1 
+Deep Learning 
+Prof. Mitesh M. Khapra 
+IIT Ropar 
+2 
+Deep Learning 
+Prof. Prabir Kumar 
+Biswas 
+IIT Kharagpur 
+ 
+ 
+Web Reference: 
+https://nptel.ac.in/courses/106/106/106106184/ 
+https://www.coursera.org/specializations/deep-learning 
+ 
+ 
+ 
+ 
+
+Shri Shankaracharya Technical Campus, Bhilai 
+(An Autonomous Institute Affiliated to CSVTU Bhilai) 
+SYLLABUS 
+B. Tech. Seventh Semester- Computer Science & Engineering 
+ 
+ 
+ 
+1.00 
+Applicable for 
+AY 2021-22 Onwards 
+Chairman (AC) 
+Chairman (BoS) 
+Date of Release 
+Version 
+ 
+ 
+ 
+Subject Code 
+CS110792 
+Deep Learning Lab 
+L =  
+T = 0 
+P = 2 
+Credits = 1 
+Evaluation 
+Scheme 
+ESE 
+CT 
+TA 
+Total 
+ESE Duration 
+25 
+- 
+25 
+50 
+3 Hours 
+Course Objectives 
+Course Outcomes 
+ 
+To illustrate simple neural networks 
+and deep neural networks. 
+ 
+To interpret the model results and 
+analyze the accuracy of the model. 
+ 
+To explain different preprocessing 
+operations on structured data or on 
+unstructured data. 
+ 
+To explain how to predict the results 
+using a trained model. 
+ 
+Perform 
+different 
+pre-processing 
+operations on structured or unstructured 
+data 
+ 
+Design neural network layers for various 
+learning problems. 
+ 
+Demonstrate binary as well as multi- 
+class classification problems. 
+ 
+Interpret the model results and analyze 
+the performance of the model. 
+ 
+Apply statistical concepts and perform 
+Exploratory Data Analysis. 
+ 
+Implement, train, and validate their own 
+neural network 
+ 
+Guidelines for Laboratory Conduction: 
+ 
+Prior knowledge of Linear Algebra, Probability Theory, Machine Learning, Artificial 
+Neural Network, Python programming language is essential. 
+ 
+Operating System recommended: - 64-bit Open-source Linux or its derivative 
+ 
+Recommended tools for the implementation: Python, OpenCV, TensorFlow, Pytorch, 
+MATLAB, etc. 
+ 
+Use of the Anaconda platform is encouraged. 
+1. Write a program to generate following logic functions using McCulloch-Pitts neuron 
+and appropriate values for weights, bias and threshold 
+a) AND logic function 
+b) OR logic function 
+c) NOT logic function 
+d) NOR logic function 
+e) XOR logic function 
+ 
+2. Write a program to build a logistic regression classifier with a Neural Network 
+mindset. Consider following guidelines. 
+a) Consider any convenient dataset (Cats dataset etc.) and pre-process the 
+dataset. 
+b) Define the appropriate model structure. 
+
+Shri Shankaracharya Technical Campus, Bhilai 
+(An Autonomous Institute Affiliated to CSVTU Bhilai) 
+SYLLABUS 
+B. Tech. Seventh Semester- Computer Science & Engineering 
+ 
+ 
+ 
+1.00 
+Applicable for 
+AY 2021-22 Onwards 
+Chairman (AC) 
+Chairman (BoS) 
+Date of Release 
+Version 
+ 
+ 
+c) Evaluate the model performance. 
+d) Analyse the obtained results 
+ 
+3. Design a neural network (NN) model with one hidden layer for classification 
+problems. Use Planar data set or any other suitable data set 
+a) Implement a 2-class classification neural network with a single hidden layer. 
+b) Use units with a non-linear activation function, such as tanh. 
+c) Compute the cross-entropy loss. 
+d) Implement forward and backward propagation. 
+e) Evaluate the model performance. 
+f) Analyse the results 
+ 
+4. Implement a multilayer perceptron (MLP) model for prediction such as house prices. 
+a) Perform Exploratory Data Analysis 
+b) Prepare dataset 
+c) Build MLP model 
+d) Evaluate Model performance 
+e) Predict for test data 
+ 
+5. Build a Multiclass classifier using the CNN model. Use MNIST or any other suitable 
+dataset. 
+a) Perform Data Pre-processing 
+b) Define Model and perform training 
+c) Evaluate Results using confusion matrix 
+ 
+6. Design an object detection model using deep neural networks for simple objects. 
+a) Select appropriate dataset and perform data pre-processing 
+b) Define architecture in terms of layers 
+c) Evaluate Model performance 
+d) Label the object with appropriate text 
+ 
+7. Install OpenCV package on your system and perform following operations on 
+images. 
+a) Image Sharpening 
+b) Edge Detection & Image Gradients 
+c) Cropping 
+d) Blurring 
+e) Background Subtraction Method 
+ 
+8. Design and implement a CNN for Image Classification. 
+a) Select a suitable image classification dataset (medical imaging, agricultural, 
+etc.). 
+b) Optimized with different hyper-parameters including learning rate, filter size, no. 
+of layers, optimizers, dropouts, etc 
+ 
+9. Apply a pre-trained network and apply it to a new task using transfer learning. 
+a) Use any three pre-trained models including AlexNet, GoogleNet, VGGNet, 
+MobileNet, ResNet, DenseNet, etc. 
+b) Fine-tune the hyper-parameters and compare their performance for a suitable 
+
+Shri Shankaracharya Technical Campus, Bhilai 
+(An Autonomous Institute Affiliated to CSVTU Bhilai) 
+SYLLABUS 
+B. Tech. Seventh Semester- Computer Science & Engineering 
+ 
+ 
+ 
+1.00 
+Applicable for 
+AY 2021-22 Onwards 
+Chairman (AC) 
+Chairman (BoS) 
+Date of Release 
+Version 
+ 
+ 
+ 
+Text Books: 
+S. No. 
+Title 
+Author(s) 
+Publisher 
+1 
+R Programming for Beginners 
+Sandip Rakshit 
+McGraw Hill Education 
+(India) 
+2 
+Data Analytics using R 
+Seema Acharya 
+McGrawHill Education 
+(India) 
+ 
+ 
+ 
+application. 
+ 
+10. Design RNN or its variant including LSTM or GRU. 
+a) Select a suitable time series dataset. Example – predict sentiments based on 
+product reviews 
+b) Apply for prediction 
+ 
+11. Build a word2vec model for unstructured data. 
+a) Use any unstructured text dataset 
+b) Convert words into a representative vector of numerical values 
+ 
+12. Implement an artificial neural network on GPUs 
+a) Implement ANN on GPUs. 
+b) Deploy the model using Amazon SageMaker or other platforms available 
+ 
+13. Implement Auto-encoders for any of the task including. 
+a) Data Compression 
+b) Image de-noising 
+c) Dimensionality reduction 
+ 
+14. Design and implement Deep Convolutional GAN to generate images of faces/digits 
+from a set of given images. 
+ 
+
+Shri Shankaracharya Technical Campus, Bhilai 
+(An Autonomous Institute Affiliated to CSVTU Bhilai) 
+SYLLABUS 
+B. Tech. Seventh Semester- Computer Science & Engineering 
+ 
+ 
+ 
+1.00 
+Applicable for 
+AY 2021-22 Onwards 
+Chairman (AC) 
+Chairman (BoS) 
+Date of Release 
+Version 
+ 
+ 
+ 
+Subject Code 
+CS102791 
+R Programming Lab 
+L =  
+T = 0 
+P = 2 
+Credits = 1 
+Evaluation 
+Scheme 
+ESE 
+CT 
+TA 
+Total 
+ESE Duration 
+25 
+- 
+25 
+50 
+3 Hours 
+Course Objectives 
+Course Outcomes 
+ 
+Demonstrate use of basic functions 
+ 
+Create 
+their 
+own 
+customized 
+functions 
+ 
+Construct tables and figures for 
+descriptive statistics 
+ 
+Learn to understand new data sets 
+and functions by yourself 
+ 
+Work on built-in real-time cases for 
+analysis and visualization  
+ 
+Enable to build programming logic 
+and thereby developing skills in 
+programming 
+ 
+Clear understanding on how to 
+organize data analyse data using 
+real time example 
+ 
+List of Experiments. 
+1. Write a program to check whether a year (integer) entered by the user is a leap year 
+or not? 
+2. Write an R program to find the sum of natural without formula using the if-else 
+statement and while loop. 
+3. Write a program that prints the grades of the students according to the marks 
+obtained. The grading of the marks should be as follows. Marks Grades 800-1000 
+A+, 700 – 800 A, 500 – 700 B+, 400-500 B, 150 – 400 C, Less than 150 D. 
+4. Write an R program to make a simple calculator that can add, subtract, multiply and 
+divide using switch cases and functions. 
+5. Write a program to perform searching within a list (1 to 50). If the number is found in 
+the list, print that the search is successful otherwise print that the number is not in 
+the list. Program: 
+6. Create a list and data frame that stores the marks of any three subjects for 10 
+students. Find out the total marks, average, maximum marks and minimum marks 
+of every subject. 
+7. Write the steps to import data from Excel to CSV files and apply data viewer 
+functions like rm(),dim(),head(), tail(), sorting, filtering, searching to view few set of 
+rows. 
+8. Write a program to create two 3 X 3 matrices A and B and perform the following 
+operations: 
+a. Transpose of the matrix. 
+b. Addition. 
+c. Subtraction 
+9. Write an R program to create a list containing strings, numbers, vectors and logical 
+values and do the following manipulations over the list: 
+a. Access the first element in the list 
+b. Give the names to the elements in the list 
+c. Add element at some position in the list 
+
+Shri Shankaracharya Technical Campus, Bhilai 
+(An Autonomous Institute Affiliated to CSVTU Bhilai) 
+SYLLABUS 
+B. Tech. Seventh Semester- Computer Science & Engineering 
+ 
+ 
+ 
+1.00 
+Applicable for 
+AY 2021-22 Onwards 
+Chairman (AC) 
+Chairman (BoS) 
+Date of Release 
+Version 
+ 
+ 
+ 
+Text Books: 
+S. No. 
+Title 
+Author(s) 
+Publisher 
+1 
+R Programming for Beginners 
+Sandip Rakshit 
+McGraw Hill Education 
+(India) 
+2 
+Data Analytics using R 
+Seema Acharya 
+McGrawHill Education 
+(India) 
+ 
+ 
+ 
+d. Remove the element 
+e. Print the fourth element 
+f. Update the third element 
+10. Let us use the built-in dataset air quality which has Daily air quality measurements 
+in New York, May to September 1973. Create a histogram by suing appropriate 
+arguments for the following statements: 
+a. Assigning names, using the air quality data set 
+b. Change colours of the Histogram 
+c. Remove Axis and Add Labels to Histogram 
+d. Change Axis limits of a Histogram 
+e. Create a Histogram with density and Add Density curve to the Histogram 
+11. Design a data frame in R for storing about 20 employee details. Create a CSV file 
+named “input.csv” that defines all the required information about the employee such 
+as id, name, salary, start_date, dept. Import into R and do the following analysis. 
+a. Find the total number rows & columns 
+b. Find the maximum salary 
+c. Retrieve the details of the employee with maximum salary 
+d. Retrieve all the employees working in the IT Department 
+e. Retrieve the employees in the IT Department whose salary is greater than 
+20000 and write these details into another file “output.csv”. 
+12. Create a dataset or table [„Smart Phone”] in an excel sheet that stores the mobile 
+information [price, company name, model, Sale Percent] of five different companies. 
+Store at least 20 rows. Write the scripts and find out the output for the following 
+information. 
+a. Maximum price of the mobile of each company 
+b. Minimum price of mobile of each company 
+c. Average price of mobile of each company 
+d. Total Price of mobile of each company 
+
+Shri Shankaracharya Technical Campus, Bhilai 
+(An Autonomous Institute Affiliated to CSVTU Bhilai) 
+SYLLABUS 
+B. Tech. Seventh Semester- Computer Science & Engineering 
+ 
+ 
+ 
+1.00 
+Applicable for 
+AY 2021-22 Onwards 
+Chairman (AC) 
+Chairman (BoS) 
+Date of Release 
+Version 
+ 
+ 
+ 
+Subject Code 
+CS102721 
+Internet and Web Technology 
+L = 3 
+T = 2 
+P = 0 
+Credits = 3 
+Evaluation 
+Scheme 
+ESE 
+CT 
+TA 
+Total 
+ESE Duration 
+100 
+20 
+30 
+150 
+3 Hours 
+Course Objectives 
+Course Outcomes 
+1. Describe the important features of the Web 
+and Web browser software 
+2. Evaluate e-mail software and Web-based e-
+mail services 
+3. Use FTP and other services to transfer and 
+store data 
+4. Demonstrate the use of real-time chat and 
+briefly describe the history of the wireless 
+Internet 
+5. Create HTML documents and enhance 
+them with browser extensions 
+Students will be able to: 
+1. Understand, analyze and apply the role of 
+languages like HTML, DHTML, CSS, XML, 
+Javascript, and web applications 
+2. Analyze a web page and identify its elements 
+and attributes. 
+3. Create XML documents and XML Schema 
+ 
+UNIT-I INTRODUCTION TO INTERNET: Introduction, Evolution of Internet, Internet 
+Applications, Internet Protocol -TCP/IP, UDP, HTTP, Secure Http(Shttp) Internet Addressing 
+– Addressing Scheme – Ipv4 & IPv6, Network Byte Order, Domain Name Server and IP 
+Addresses, Mapping . Internet Service Providers, Types Of Connectivity Such As Dial-Up 
+Leaded Vsat Etc. Web Technologies: ThreeTier Web Based Architecture; Jsp, Asp, J2ee, .Net 
+Systems 
+CO _ 
+__ Hrs 
+UNIT-II HTML CSS AND SCRIPTING: HTML - Introduction, Sgml, Dtd(Document 
+Type Definition, Basic Html Elements, Tags and usages, HTML Standards , Issues in HTML 
+Dhtml: Introduction Cascading Style Sheets: Syntax ,Class Selector, Id Selector Dom 
+(Document ObjectModel) & DSO (Data Source Object) Approaches To Dynamic Pages: Cgi, 
+Java Applets, Plug Ins, Active X, Java Script –Java Script Object Model, Variables-Constant 
+– Expressions, Conditions Relational Operators- Data Types – Flow Control – Functions & 
+Objects-events and event handlers – Data type Conversion & Equality – Accessing HTML 
+form elements 
+CO _ 
+__ Hrs 
+UNIT-III XML: What is XML – Basic Standards, Schema Standards, Linking & 
+Presentation Standards, Standards that build on XML, Generating XML data, Writing a 
+simple XML File, Creating a Document type definition, Documents &Data ,Defining 
+Attributes & Entities in the DTD ,Defining Parameter Entities & conditional Sections, 
+Resolving a naming conflict, Using Namespaces, Designing an XML data structure, 
+CO __ 
+__Hrs 
+
+Shri Shankaracharya Technical Campus, Bhilai 
+(An Autonomous Institute Affiliated to CSVTU Bhilai) 
+SYLLABUS 
+B. Tech. Seventh Semester- Computer Science & Engineering 
+ 
+ 
+ 
+1.00 
+Applicable for 
+AY 2021-22 Onwards 
+Chairman (AC) 
+Chairman (BoS) 
+Date of Release 
+Version 
+ 
+ 
+ 
+Text Books: 
+S. 
+No. 
+Title 
+Author(s) 
+Publisher 
+1 
+Internet & Intranet 
+Engineering 
+Daniel Minoli 
+TMH 
+2 
+Internet for Every One 
+Alexis Leon and 
+Mathews Leon 
+Tech World 
+ 
+Reference Books: 
+S. 
+No. 
+Title 
+Author(s) 
+Publisher 
+1 
+Using HTML 4, XML and 
+JAVA 
+Eric Ladd, Jim 
+O’Donnel 
+Prentice Hall of India -1999 
+ 
+Beginning Java Script 
+Paul Wilton 
+SPD Publications 
+ 
+Frontiers of Electronics of 
+Commerce 
+Ravi kalakota & 
+Andrew B. Whinston 
+Addison Wesley 
+ 
+ 
+ 
+Normalizing Data, Normalizing DTDS 
+UNIT-IV INTERNET SECURITY & FIREWALLS: Security Threats From Mobile 
+Codes, Types Of Viruses, Client Server Security Threats, Data & Message Security, Various 
+electronic payment systems, Introduction to EDI, Challenges– Response System, Encrypted 
+Documents And Emails,Firewalls: Hardened Firewall Hosts, Ip- Packet Screening, Proxy 
+Application Gateways, Aaa (Authentication, Authorization And Accounting). 
+CO _ 
+__ Hrs 
+UNIT-V WEBSITE PLANNING & HOSTING: Introduction, Web Page Lay-Outing, 
+Where To Host Site, Maintenance Of Site, Registration Of Site On Search Engines And 
+Indexes, Introduction To File Transfer Protocol, Public Domain Software, Types Of Ftp 
+Servers (Including Anonymous),Ftp Clients Common Command. Telnet Protocol, Server 
+Domain, Telnet Client, Terminal Emulation. Usenet And Internet Relay Chat. 
+CO __ 
+__Hrs 
+
+Shri Shankaracharya Technical Campus, Bhilai 
+(An Autonomous Institute Affiliated to CSVTU Bhilai) 
+SYLLABUS 
+B. Tech. Seventh Semester- Computer Science & Engineering 
+ 
+ 
+ 
+1.00 
+Applicable for 
+AY 2021-22 Onwards 
+Chairman (AC) 
+Chairman (BoS) 
+Date of Release 
+Version 
+ 
+ 
+ 
+Subject Code 
+CS100741 
+Enterprise Resource Planning 
+L = 3 
+T = 0 
+P = 0 
+Credits = 3 
+Examination 
+Scheme 
+ESE 
+CT 
+TA 
+Total 
+ESE Duration 
+100 
+20 
+30 
+150 
+3 Hours 
+Minimum number of class tests to be 
+conducted=02 
+Minimum Assignments=02 
+Course Objectives 
+Course Outcomes 
+ To know the basics of ERP and business 
+modules of ERP.  
+ To understand the key implementation 
+issues of ERP.  
+ To be aware of some popular products in the 
+area of ERP. 
+ To appreciate the current and future trends 
+in ERP 
+ To know the basics of ERP 
+ To understand the key implementation issues of 
+ERP 
+ To know the business modules of ERP 
+ To be aware of some popular products in the 
+area of ERP 
+ To appreciate the current and future trends in 
+ERP 
+Unit-I Introduction: Overview of enterprise systems ñ Evolution - Risks and benefits – Fundamental 
+technology - Issues to be consider in planning design and implementation of cross functional 
+integrated ERP systems. Introduction to SAP 
+Unit- II ERP Solutions and Functional Modules: Overview of ERP software solutions- Small, 
+medium and large enterprise vendor solutions, BPR and best business practices - Business process 
+Management, Functional modules.  
+Unit-III ERP Implementation: Planning Evaluation and selection of ERP systems - Implementation 
+life cycle - ERP implementation, Methodology and Frame work- Training ñ Data Migration – People 
+Organization in implementation-Consultants, Vendors and Employees.  
+Unit-IV Post Implementation: Maintenance of ERP- Organizational and Industrial impact; Success 
+and Failure factors of ERP Implementation. Emerging Trends on ERP: Extended ERP systems and 
+ERP add-ons -CRM, SCM, Business analytics - Future trends in ERP systems-web enabled, Wireless 
+technologies, cloud computing.  
+Unit V ERP and Related Technologies. ERP and Related Technologies. Business Process 
+Reengineering (BPR). Management Information System (MIS). Executive Information System. 
+Decision support System (DSS). Supply Chain Management (SCM) Other Related Technologies of 
+SCM E-Procurement; E-Logistics; Internet Auctions; E-markets; Electronic Business Process 
+Optimization; Business Objects in SCM; E commerce 
+ 
+
+Shri Shankaracharya Technical Campus, Bhilai 
+(An Autonomous Institute Affiliated to CSVTU Bhilai) 
+SYLLABUS 
+B. Tech. Seventh Semester- Computer Science & Engineering 
+ 
+ 
+ 
+1.00 
+Applicable for 
+AY 2021-22 Onwards 
+Chairman (AC) 
+Chairman (BoS) 
+Date of Release 
+Version 
+ 
+ 
+ 
+Text Books: 
+ 
+S. No. 
+Title 
+Author(s) 
+Publisher 
+1 
+ERP demystified 
+Alexis Leon 
+Tata McGraw-Hill,2008 
+2 
+Essentials of Business Process and 
+Information System 
+Sinha P. Magal and 
+Jeffery Word 
+Wiley India,2012 
+Reference Books:  
+S. No. 
+Title 
+Author(s) 
+Publisher 
+1 
+ERP and Supply Chain Management 
+Christian N. Madu 
+CHI4 
+2 
+Implementing SAP ERP Sales & 
+Distribution 
+Glynn C. Williams 
+McGraw-Hill 
+ 
+
